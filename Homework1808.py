@@ -3,9 +3,7 @@
 #Escreva um algoritmo que conte quantas operações básicas (somas) são executadas para calcular 
 #a soma dos números de 1 até n. Exiba o resultado e compare com a fórmula matemática n*(n+1)/2.
 
-
-
-def calcular_soma_e_contar_operacoes(n):
+def Cálculos(n):
     """
     Calcula a soma dos números de 1 a n, conta as operações de adição e compara com a fórmula matemática.
 
@@ -37,7 +35,7 @@ if n <= 0:
     print("Entrada inválida. Por favor, digite um número inteiro.")
     
 else:
-    calcular_soma_e_contar_operacoes(n)
+    Cálculos(n)
 
 #2. Validação de Login
 
@@ -119,3 +117,4 @@ if CPF.isdigit() and Quantidade_de_Digitos == 11:
     print("CPF válido.")
 else:
     print("CPF inválido.")
+
