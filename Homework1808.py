@@ -1,11 +1,43 @@
-
-
-
 # 1. Cálculo de Complexidade Simples
 
-#Escreva um algoritmo que conte quantas operações básicas (somas) são executadas para calcular a soma dos números de 1 até n. Exiba o resultado e compare com a fórmula matemática n*(n+1)/2.
+#Escreva um algoritmo que conte quantas operações básicas (somas) são executadas para calcular 
+#a soma dos números de 1 até n. Exiba o resultado e compare com a fórmula matemática n*(n+1)/2.
 
 
+
+def calcular_soma_e_contar_operacoes(n):
+    """
+    Calcula a soma dos números de 1 a n, conta as operações de adição e compara com a fórmula matemática.
+
+    Args:
+        n (int): O número final da sequência.
+    """
+    Soma = 0
+    Número_de_Operações = 0
+
+    for i in range(1, n + 1):
+        Soma += i
+        Número_de_Operações += 1 
+
+    Fórmula = n * (n + 1) // 2 
+
+    print(f"Com N sendo = {n}:")
+    print(f"A soma calculada é: {Soma}")
+    print(f"O número de operações executadas foram: {Número_de_Operações - 1}")
+    print(f"A soma calculada através da fórmula é: {Fórmula}")
+    
+    
+    if Soma == Fórmula:
+        print("Os resultados da soma e da fórmula são iguais.")
+    else:
+        print("Houve uma diferença entre a soma iterativa e a fórmula.")
+
+n = int(input("Digite um número:" ))
+if n <= 0:
+    print("Entrada inválida. Por favor, digite um número inteiro.")
+    
+else:
+    calcular_soma_e_contar_operacoes(n)
 
 #2. Validação de Login
 
@@ -85,5 +117,5 @@ Quantidade_de_Digitos = len(str(CPF))
 
 if CPF.isdigit() and Quantidade_de_Digitos == 11:
     print("CPF válido.")
-elif CPF.isalpha() or Quantidade_de_Digitos > 11 or Quantidade_de_Digitos > 11:
+else:
     print("CPF inválido.")
