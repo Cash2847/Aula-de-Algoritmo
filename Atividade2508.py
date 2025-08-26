@@ -70,7 +70,14 @@ for i in Temperaturas_da_Semana:
 #    2. Caso o usuário digite "sair", o programa encerra.
 #    3. Mostre a lista final de compras organizada em ordem alfabética.
 
+Lista_de_Itens = ["Arroz", "Celular", "Refrigerante", "Anél"]
 
+Lista_de_Itens.append(input("O que você gostaria de adcionar á lista? "))
+Lista_de_Itens.append(input("O que mais você gostaria de adicionar? "))
+
+Lista_de_Itens.sort()
+
+print(Lista_de_Itens)
 
 # Estudo de Caso 3 – Analisando números pares e ímpares
 # Enunciado:
@@ -81,7 +88,18 @@ for i in Temperaturas_da_Semana:
 #    2. Separe-os em duas listas: pares e ímpares.
 #    3. Exiba quantos números pares e ímpares foram digitados.
 
+Lista_de_Números = []
+Quantidade_de_Números_em_Lista = 0
 
+while True:
+    Escolha_Números = Lista_de_Números.append(input("Quais números você gostaria de adicionar? "))
+    Quantidade_de_Números_em_Lista += 1
+
+    if Quantidade_de_Números_em_Lista < 10:
+        Escolha_Números = Lista_de_Números.append(input("Quais números você gostaria de adicionar? "))
+    else:
+        
+    
 
 #Estudo de Caso 4 - Controle de Vendas em uma Loja de Eletrônicos
 
