@@ -1,22 +1,45 @@
-Quantidade_de_Numeros_em_Lista = 0
+### DIFERENÇA ENTRE LISTAS E DICIONÁRIOS ###
 
-while True:
-    Lista_de_Numeros = []
-    Numeros_Pares = []
-    Numeros_Impares = []
-    Escolha_Numeros = Lista_de_Numeros.append(input("Quais números você gostaria de adicionar? "))
+lista = []
+Dicionario = {
+     "Chave" : 10,
+     "Outra coisa" : 11
+     }
 
-    if Quantidade_de_Numeros_em_Lista < 10:
-        Escolha_Numeros = Lista_de_Numeros.append(input("Quais números você gostaria de adicionar? "))
-    
-    for n in Lista_de_Numeros:
-        if n % 2 == 0:
-            Numeros_Pares.append(n)
-            print("Os números páres da lista são: ", Numeros_Pares)
+print(Dicionario["Outra coisa"])
 
-        else:
-            Numeros_Impares.append(n)
-            print("Os números ímpares da lista são: ", Numeros_Impares)
-            break
-    
+#Aluno -> Nome, curso. idade
+
+Aluno = {
+     "Nome": "Fulano",
+     "Curso" : "Engenharia de Software",
+      "Idade" : 26
+}
+
+print(Aluno.get("Curso"))
+
+Personagens = {
+
+    "Personagem_1" : {
+        "ID": 1,
+        "Name": "Rick",
+        "Status": "Alive",
+        "Species" : "Human"
+    },
+
+    "Personagem_2" : {
+        "ID": 2,
+        "Name": "Morty",
+        "Status": "Alive",
+        "Species" : "Human"
+    }
+}
+
+# Personagens.update({"Status" : "Dead"})
+# Personagens["Status"] = "Alive"
+# Personagens["ID"] = 2
+# Personagens.pop("Status")
+print(Personagens)
+
+
 
