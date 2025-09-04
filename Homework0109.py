@@ -8,30 +8,7 @@
 # 3. Calcular a média de vendas por dia.
 # 4. Listar os dias que tiveram vendas acima da média.
 
-import random
-
-Lista_de_Vendas_por_Dia = {}
-
-for v in range(30):
-    Venda_do_Dia = random.randint(1, 40)
-    Lista_de_Vendas_por_Dia.get(Venda_do_Dia)
-
-Vendas_Totais = sum(Lista_de_Vendas_por_Dia)
-Menos_Vendas = min(Lista_de_Vendas_por_Dia)
-Mais_Vendas = max(Lista_de_Vendas_por_Dia)
-Media_de_Vendas = Vendas_Totais / len(Lista_de_Vendas_por_Dia)
-
-Dias_Acima_da_Media = []
-for i, Vendas in enumerate(Lista_de_Vendas_por_Dia):
-    if Vendas > Media_de_Vendas:
-        Dias_Acima_da_Media.append(i)
-
-print(f"As vendas por dia foram {Lista_de_Vendas_por_Dia}")
-print("O dia do com mais vendas no mês teve ", Mais_Vendas,"vendas.")
-print("O dia com menos vendas no mês teve ", Menos_Vendas,"vendas.")
-print("A média de vendas por dia no mês foi de ", Media_de_Vendas,".")
-print("Os dias que possuem um número de vendas acima da média são ", Dias_Acima_da_Media,".")
-
+Lista_de_Vendas_por_Dia = {""}
 
 # Caso6: Sistema de Biblioteca
 # Uma biblioteca mantém uma lista de livros emprestados, onde cada item é representado por
@@ -50,28 +27,29 @@ print("Os dias que possuem um número de vendas acima da média são ", Dias_Aci
 # 4. Calcular a média de dias de empréstimo.
 
 Livros_Emprestados = {
-    ["Dom Casmurro", "Ana", 5], 
-    ["1984", "Carlos", 12], 
-    ["O Hobbit", "Marina", 3],
-    ["O Senhor dos Anéis", "Miguel", 10]
+    "Caso-1" : {
+        "Livro" : "Dom Casmurro", 
+        "Usuário" : "Ana", 
+        "Dias_Emprestados" : 5}, 
+    "Caso-2" : {
+         "Livro" : "1984", 
+        "Usuário" : "Carlos", 
+        "Dias_Emprestados" : 12
+    }, 
+    "Caso-3" : {
+        "Livro" : "O Hobbit", 
+        "Usuário" : "Marina", 
+        "Dias_Emprestados" : 3
+    },
+    "Caso-4" : {
+        "Livro" : "O Senhor dos Anéis",
+        "Usuário" : "Miguel",
+        "Dias_Emprestados" : 10      
+    }
 }
 
-Mais_Dias = -1
-Soma_Dos_Dias = 0
-Lista_dos_Usuarios = []
-Livros_que_Passaram_de_7_Dias = []
-for Livro, Usuario, Dias in Livros_Emprestados:
-    if Dias > 7:
-        Livros_que_Passaram_de_7_Dias.append(Livro)
-    if Dias > Mais_Dias:
-        Dias == Mais_Dias
-        Emprestado_Mais_Tempo = (f"{Livro} por {Usuario}")
-    Lista_dos_Usuarios.append(Usuario)
-    Soma_Dos_Dias += Dias
-    Media_De_Dias = Soma_Dos_Dias / len(Livros_Emprestados)
+Livros_Acima_7_Dias = []
 
-
-print(f"Os livros que estão emprestados há mais de 7 dias são: {Livros_que_Passaram_de_7_Dias}")
-print(f"O livro emprestado há mais tempo é {Emprestado_Mais_Tempo}.")
-print(f"Os usários com livros emprestados são: {Lista_dos_Usuarios}")
-print(f"A média de dias de emprétimo é: {Media_De_Dias}")
+for Emprestimos in Livros_Emprestados:
+    if Livros_Emprestados["Caso-1"["Dias_Emprestados"]]["Caso-2"["Dias_Emprestados"]]["Caso-3"["Dias_Emprestados"]["Caso-4"["Dias_Emprestados"]]] > 7:
+        
