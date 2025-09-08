@@ -8,7 +8,35 @@
 # 3. Calcular a média de vendas por dia.
 # 4. Listar os dias que tiveram vendas acima da média.
 
-Lista_de_Vendas_por_Dia = {""}
+import random
+import statistics
+
+vendas_por_dia_do_mes = {}  
+numero_de_vendas = 30
+Dias_Acima_da_Media = {}
+
+for i in range(numero_de_vendas):
+    vendas_por_dia = random.randint(1, 40) 
+    vendas_por_dia_do_mes[f"Dia_{i+1}"] = vendas_por_dia
+
+vendas_totais = vendas_por_dia_do_mes.values()
+
+soma_de_vendas = sum(vendas_por_dia_do_mes.values())
+menos_vendas = min(vendas_por_dia_do_mes.values())
+mais_vendas = max(vendas_por_dia_do_mes.values())
+media_de_vendas = sum(vendas_totais) / len(vendas_totais)
+statistics.mean(vendas_por_dia_do_mes.values())
+for vendas in vendas_por_dia_do_mes.values():
+    if vendas > media_de_vendas:
+        Dias_Acima_da_Media = vendas
+
+
+print(f"As vendas por dia foram {vendas_por_dia_do_mes}")
+print(f"O total de vendas foram {soma_de_vendas}")
+print("O dia do com mais vendas no mês teve ", mais_vendas,"vendas.")
+print("O dia com menos vendas no mês teve ", menos_vendas,"vendas.")
+print("A média de vendas por dia no mês foi de ", media_de_vendas,".")
+print("Os dias que possuem um número de vendas acima da média são ", Dias_Acima_da_Media,".")
 
 # Caso6: Sistema de Biblioteca
 # Uma biblioteca mantém uma lista de livros emprestados, onde cada item é representado por
@@ -26,30 +54,32 @@ Lista_de_Vendas_por_Dia = {""}
 # 3. Gerar uma lista apenas com os nomes dos usuários que têm livros emprestados.
 # 4. Calcular a média de dias de empréstimo.
 
-Livros_Emprestados = {
-    "Caso-1" : {
-        "Livro" : "Dom Casmurro", 
-        "Usuário" : "Ana", 
-        "Dias_Emprestados" : 5}, 
-    "Caso-2" : {
-         "Livro" : "1984", 
-        "Usuário" : "Carlos", 
-        "Dias_Emprestados" : 12
-    }, 
-    "Caso-3" : {
-        "Livro" : "O Hobbit", 
-        "Usuário" : "Marina", 
-        "Dias_Emprestados" : 3
-    },
-    "Caso-4" : {
-        "Livro" : "O Senhor dos Anéis",
-        "Usuário" : "Miguel",
-        "Dias_Emprestados" : 10      
-    }
+Livros_emprestados = {
+    "Dom Casmurro" : {"Usuário": "Ana", "Dias-Emprestados": 5},
+    "1984" : {"Usuário": "Carlos", "Dias-Emprestados": 12},
+    "O Hobbit" : {"Usuário": "Marina", "Dias-Emprestados": 3},
+    "O Senhor dos Anéis": {"Usuário": "Miguel", "Dias-Emprestados": 10},
+    "Harry Potter" : {"Usuário": "Diana", "Dias-Emprestados": 8},
 }
 
-Livros_Acima_7_Dias = []
+Livros_antigos = {}
+for titulo, dados in Livros_emprestados.items():
+    if dados["Dias-Emprestados"] > 7:
+        Livros_antigos[titulo] = dados
+print(f"Os livros emprestados há mais de 7 dias são: {Livros_antigos}")
 
-for Emprestimos in Livros_Emprestados:
-    if Livros_Emprestados["Caso-1"["Dias_Emprestados"]]["Caso-2"["Dias_Emprestados"]]["Caso-3"["Dias_Emprestados"]["Caso-4"["Dias_Emprestados"]]] > 7:
-        
+Livro_mais_antigo = None
+Maximo_de_dias = 0
+for titulo, dados in Livros_emprestados.items():
+    if dados["Dias-Emprestados"] > Maximo_de_dias:
+        Maximo_de_dias = dados["Dias-Emprestados"]
+        Livro_mais_antigo = {titulo: dados}
+print(f"O livro emprestado há mais tempo é: {Livro_mais_antigo}")
+
+Total_de_dias = 0
+Numero_de_emprestimos = len(Livros_emprestados)
+for dados in Livros_emprestados.values():
+    Total_de_dias += dados["Dias-Emprestados"]
+
+Media_de_dias = Total_de_dias / Numero_de_emprestimos if Numero_de_emprestimos > 0 else 0
+print(f"Média de dias é: {Media_de_dias}")
