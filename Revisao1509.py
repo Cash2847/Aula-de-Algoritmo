@@ -44,3 +44,21 @@ def valor_de_gastos(cliente):
         
 
 print(valor_de_gastos("Ana"))
+
+def prato_mais_vendido():
+    contagem = {}
+    for pedido in pedidos:
+        for item in pedido["itens"]:
+            prato = item["prato"]
+            if prato not in contagem:
+                contagem[prato] = 0
+            contagem[prato] +=1
+
+    quantidade_vendida = 0
+    for prato, qtd in contagem.items():
+        if qtd > quantidade_vendida:
+            quantidade_vendida = qtd
+            mais_vendido = prato
+    return mais_vendido
+
+print("total: ", prato_mais_vendido())
