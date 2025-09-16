@@ -34,17 +34,6 @@ pedidos = [
     }
 ]
 
-
-# def valor_do_gasto(cliente):
-#     valor_total_gasto = 0
-#     for pedido in pedidos:
-#         cliente_escolhido = valor_do_gasto
-#         if cliente_escolhido in pedido["cliente"]:
-#             valor_total_gasto += sum(pedido["itens"])
-#             print(valor_total_gasto)
-
-# print(f"O clinte gastou aproximadamente {valor_do_gasto(pedidos)}")
-
 def valor_de_gastos(cliente):
     valor_total_gasto = 0
     for pedido in pedidos:
