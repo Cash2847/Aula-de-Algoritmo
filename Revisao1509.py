@@ -6,7 +6,7 @@
 # 1. Crie uma função que receba o nome de um cliente e retorne o valor total gasto (somando
 # todos os itens pedidos).
 # 2. Crie uma função que descubra qual prato foi o mais vendido no dia.
-# 3. Mostre um ranking com os 3 clientes que mais gastaram, em ordem decrescente.
+
 
 
 pedidos = [
@@ -62,3 +62,17 @@ def prato_mais_vendido():
     return mais_vendido
 
 print("total: ", prato_mais_vendido())
+
+# 3. Mostre um ranking com os 3 clientes que mais gastaram, em ordem decrescente.
+
+def ranking_de_clientes():
+    gasto = {}
+    for pedido in pedidos:
+        cliente = pedido["cliente"]
+        total = sum(item["preço"] for item in pedido["itens"])
+        gasto[cliente]  = total
+        
+    var = sorted(gasto.items(), key = lambda x: x[1], reverse=True)[:3]
+    print(var) 
+
+ranking_de_clientes()
