@@ -71,8 +71,63 @@ def ranking_de_clientes():
         cliente = pedido["cliente"]
         total = sum(item["preço"] for item in pedido["itens"])
         gasto[cliente]  = total
-        
+
+
+    atletas = [
+    {
+        "nome": "Lucas",
+        "idade": 20,
+        "modalidades": ["Natação", "Corrida"],
+        "treinos": {"Natação": 12, "Corrida": 8}
+    },
+    {
+        "nome": "Mariana",
+        "idade": 25,
+        "modalidades": ["Musculação", "Yoga", "Pilates"],
+        "treinos": {"Musculação": 15, "Yoga": 10, "Pilates": 5}
+    },
+    {
+        "nome": "João",
+        "idade": 22,
+        "modalidades": ["Corrida", "Ciclismo"],
+        "treinos": {"Corrida": 20, "Ciclismo": 18}
+    },
+]
+
+def media_de_idade(atletas, esporte_procurado):
+    soma_idades = 0
+    contagem_atletas = 0
+    for atleta in atletas:
+        if esporte_procurado in atleta["modalidades"]:
+            soma_idades += atleta["idade"]
+            contagem_atletas += 1
+    if contagem_atletas > 0:
+        return soma_idades / contagem_atletas
+    else:
+        return 0
+    
+media_de_esporte = media_de_idade(atletas, "Natação")
+print(f"Média de idade dos atletas de natação: {media_de_esporte}")
+    
+def esporte_mais_treinado(dados_atleta):
+    if not dados_atleta["treinos"]:
+        return "Nenhum treino registrado"
+    
+    esporte_mais = max(dados_atleta["treinos"], key=dados_atleta["treinos"].get)
+    return esporte_mais
+
+def atletas_mais_de_duas_modalidades(dados_atletas):
+    nomes_atletas = []
+    for atleta in dados_atletas:
+        if len(atleta["modalidades"]) > 2:
+            nomes_atletas.append(atleta["nome"])
+    return nomes_atletas
+
+atleta_escolhido = {"nome": "Lucas", "idade": 20, "modalidades": ["Natação", "Corrida"], "treinos": {"Basquetebol": 12, "Atletismo": 8}}
+esporte = esporte_mais_treinado(atleta_escolhido)
+print(f"O esporte mais treinado por {atleta_escolhido['nome']} foi: {esporte}") 
     var = sorted(gasto.items(), key = lambda x: x[1], reverse=True)[:3]
     print(var) 
 
 ranking_de_clientes()
+
