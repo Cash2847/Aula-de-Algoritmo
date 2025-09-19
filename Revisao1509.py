@@ -60,7 +60,6 @@ def prato_mais_vendido():
             quantidade_vendida = qtd
             mais_vendido = prato
     return mais_vendido
-
 print("total: ", prato_mais_vendido())
 
 # 3. Mostre um ranking com os 3 clientes que mais gastaram, em ordem decrescente.
@@ -71,9 +70,11 @@ def ranking_de_clientes():
         cliente = pedido["cliente"]
         total = sum(item["preço"] for item in pedido["itens"])
         gasto[cliente]  = total
+        var = sorted(gasto.items(), key = lambda x: x[1], reverse=True)[:3]
+    print(var) 
 
 
-    atletas = [
+atletas = [
     {
         "nome": "Lucas",
         "idade": 20,
@@ -126,8 +127,59 @@ def atletas_mais_de_duas_modalidades(dados_atletas):
 atleta_escolhido = {"nome": "Lucas", "idade": 20, "modalidades": ["Natação", "Corrida"], "treinos": {"Basquetebol": 12, "Atletismo": 8}}
 esporte = esporte_mais_treinado(atleta_escolhido)
 print(f"O esporte mais treinado por {atleta_escolhido['nome']} foi: {esporte}") 
-    var = sorted(gasto.items(), key = lambda x: x[1], reverse=True)[:3]
-    print(var) 
 
 ranking_de_clientes()
 
+
+# Problema 3 – Loja de Música Online com Estatísticas
+# Uma loja virtual armazena músicas em uma lista de dicionários, cada música com:
+# titulo, artista, downloads, avaliacoes (lista de notas de 1 a 5).
+# Tarefas:
+# 1. Crie uma função que calcule a nota média de avaliação de cada música.
+# 2. Crie uma função que mostre qual artista tem o maior número total de downloads
+# somando todas as suas músicas.
+# 3. Monte um ranking das músicas mais bem avaliadas (ordem decrescente da média das
+# notas).
+
+musicas = [
+    {
+        "Título": "Back in Black",
+        "Artista": "AC/DC",
+        "Downloads": 6800,
+        "Avaliações": [5, 4, 5, 5, 4, 5]
+    },
+    {
+        "Título": "Stairway to Heaven",
+        "Artista": "Led Zeppelin",
+        "Downloads": 8900,
+        "Avaliações": [5, 5, 4, 5, 5, 5]
+    },
+    {   
+        "Título": "Enter Sandman",
+        "Artista": "Metallica",
+        "Downloads": 8100,
+        "Avaliações": [5, 5, 5, 4, 4, 5, 5,]
+    }
+]
+
+
+
+# Problema 4 – Ranking de Filmes
+# Você recebeu uma lista de filmes (cada filme é um dicionário) com os campos:
+# • titulo → nome do filme
+# • diretor → nome do diretor
+# • bilheteria → valor em milhões de dólares
+# • avaliacoes → lista de notas de 1 a 10
+# Tarefas:
+# 1. Top 3 maiores bilheterias
+# o Crie uma função top_bilheteria(filmes) que retorne os 3 filmes com maior
+# bilheteria.
+# 2. Top 3 melhores avaliados
+# o Crie uma função top_avaliacao(filmes) que calcule a média das avaliações de
+# cada filme e retorne os 3 melhores.
+# 3. Bilheteria por diretor
+# o Crie uma função bilheteria_por_diretor(filmes) que retorne um dicionário onde a
+# chave é o diretor e o valor é o total de bilheteria de todos os seus filmes.
+# 4. Campeão absoluto
+# o Crie uma função campeao(filmes) que mostre qual filme é a melhor combinação
+# de bilheteria alta e avaliação média alta.
