@@ -13,8 +13,8 @@ pedidos = [
     {
         "cliente": "Ana",
         "itens": [
-            {"prato": "Lasanha", "preco": 30},
-            {"prato": "Suco de Laranja", "preco": 8}
+            {"prato": "Lasanha", "preço": 30},
+            {"prato": "Suco de Laranja", "preço": 8}
         ]
     },
     {
@@ -39,7 +39,7 @@ def valor_de_gastos(cliente):
     for pedido in pedidos:
         if pedido["cliente"] == cliente:
             for item in pedido["itens"]:
-                valor_total_gasto += (item["preco"])
+                valor_total_gasto += (item["preço"])
     return valor_total_gasto
         
 
@@ -68,7 +68,7 @@ def ranking_de_clientes():
     gasto = {}
     for pedido in pedidos:
         cliente = pedido["cliente"]
-        total = sum(item["preço"] for item in pedido["itens"])
+        total = sum(item['preço'] for item in pedido['itens'])
         gasto[cliente]  = total
         var = sorted(gasto.items(), key = lambda x: x[1], reverse=True)[:3]
     print(var) 
@@ -135,9 +135,6 @@ ranking_de_clientes()
 # Uma loja virtual armazena músicas em uma lista de dicionários, cada música com:
 # titulo, artista, downloads, avaliacoes (lista de notas de 1 a 5).
 # Tarefas:
-# 1. Crie uma função que calcule a nota média de avaliação de cada música.
-# 2. Crie uma função que mostre qual artista tem o maior número total de downloads
-# somando todas as suas músicas.
 # 3. Monte um ranking das músicas mais bem avaliadas (ordem decrescente da média das
 # notas).
 
@@ -162,7 +159,62 @@ musicas = [
     }
 ]
 
+# 1. Crie uma função que calcule a nota média de avaliação de cada música.
 
+def media_de_avaliacoes(musicas):
+    cada_avaliacao = []
+    for musica in musicas:  
+        titulo = musica['Título']
+        avaliacoes = musica['Avaliações']
+
+        if not avaliacoes: 
+            media_avaliacoes = 0.0  
+        else:
+            soma_notas = 0
+            for nota in avaliacoes:
+                soma_notas += nota
+            media_avaliacoes = soma_notas / len(avaliacoes)
+
+        cada_avaliacao.append({'Título': titulo, 'media_avaliacao': media_avaliacoes})
+    return cada_avaliacao
+
+print(f"A média de cada música é {media_de_avaliacoes(musicas)}")
+
+# 2. Crie uma função que mostre qual artista tem o maior número total de downloads
+# somando todas as suas músicas.
+
+
+def mais_downloads(musicas):
+    contagem_downloads = {}
+    for musica in musicas:
+        downloads = musica["Downloads"]
+        artista = musica["Artista"]
+
+        if artista in contagem_downloads:
+             contagem_downloads[artista] += downloads
+        else:
+             contagem_downloads[artista] = downloads
+    if not contagem_downloads:
+         return None, 0 
+    quantidade_de_downloads = 0
+    for downloads, quantidade in contagem_downloads.items():
+        if quantidade > quantidade_de_downloads:
+            quantidade_de_downloads = quantidade
+    return quantidade_de_downloads
+
+print(f"A musica com mais downloads é a: {mais_downloads(musicas)}")
+
+# 3. Monte um ranking das músicas mais bem avaliadas (ordem decrescente da média das
+# notas).
+
+def ranking_avaliacoes(musicas):
+    musicas_com_medias = []
+    for musica in musicas:
+        media = media_de_avaliacoes(musicas)
+    musicas_com_medias.append({'Título': musica['Título'], 'Artista': musica['Artista'], 'Média': media})
+
+    ranking = sorted(musicas_com_medias, key=lambda x: x['Média'], reverse=True)
+    return ranking
 
 # Problema 4 – Ranking de Filmes
 # Você recebeu uma lista de filmes (cada filme é um dicionário) com os campos:
@@ -183,3 +235,59 @@ musicas = [
 # 4. Campeão absoluto
 # o Crie uma função campeao(filmes) que mostre qual filme é a melhor combinação
 # de bilheteria alta e avaliação média alta.
+
+filmes = [
+    {
+        "titulo": "Inception",
+        "diretor": "Christopher Nolan",
+        "bilheteria": 300,
+        "avaliacoes": [9, 10, 8, 9, 10]
+    },
+    {
+        "titulo": "Avengers: Endgame",
+        "diretor": "Anthony Russo",
+        "bilheteria": 2797,
+        "avaliacoes": [9, 9, 10, 10, 9]
+    },
+    {
+        "titulo": "The Dark Knight",
+        "diretor": "Christopher Nolan",
+        "bilheteria": 1005,
+        "avaliacoes": [10, 10, 9, 10, 10]
+    },
+    {
+        "titulo": "Jurassic Park",
+        "diretor": "Steven Spielberg",
+        "bilheteria": 1029,
+        "avaliacoes": [8, 9, 9, 8, 9]
+    }
+]
+
+def top_bilheteria(filmes):
+    filmes_ordenados = sorted(filmes, key=lambda filme: filme["bilheteria"], reverse=True)
+    return filmes_ordenados[:3]
+
+def top_avaliacao(filmes):
+    def calcular_media(avaliacoes):
+        if not avaliacoes:
+            return 0
+        return sum(avaliacoes) / len(avaliacoes)
+
+    filmes_com_media = [
+        {**filme, "media_avaliacao": calcular_media(filme["avaliacoes"])}
+        for filme in filmes
+    ]
+    filmes_ordenados = sorted(filmes_com_media, key=lambda item: item["media_avaliacao"], reverse=True)
+    return filmes_ordenados[:3]
+
+def bilheteria_por_diretor(filmes):
+    bilheteria_total_diretores = {}
+    for filme in filmes:
+        diretor = filme["diretor"]
+        bilheteria = filme["bilheteria"]
+        bilheteria_total_diretores[diretor] = bilheteria_total_diretores.get(diretor, 0) + bilheteria
+    return bilheteria_total_diretores
+
+print(top_bilheteria(filmes))
+print(top_avaliacao(filmes))
+print(bilheteria_por_diretor(filmes))
