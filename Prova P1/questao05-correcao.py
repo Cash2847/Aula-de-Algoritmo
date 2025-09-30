@@ -41,8 +41,8 @@ def escolhendo_funcionarios(lista_funcionarios):
     "funcionario" == input("Qual é o nome do funcionário? " )
     salario = input("Quanto é o salário do funcionário? " )
     cargo = input("Qual é o cargo desse funcionário? " )
-    informacoes['salário'] = salario
-    informacoes['cargo'] = cargo
+    informacoes.update({'salário' : salario})
+    informacoes.update({'cargo' : cargo})
     lista_funcionarios["funcionario"] = informacoes
     print(lista_funcionarios)
 
