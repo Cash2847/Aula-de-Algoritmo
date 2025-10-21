@@ -13,9 +13,8 @@ for aluno in range(alunos):
 
 for i in range(alunos):
     media_aluno = sum(notas[i])/provas
+    print(f"A média é do aluno {i+1} é: {media_aluno}")
 
 for j in range(provas):
     media_provas = sum(notas[i][j] for i in range(alunos))/alunos
-
-print(f"A média é de cada aluno é: {media_aluno}")
-print(f"A média é de cada prova é: {media_provas}")
+    print(f"A média é da prova {j+1} é: {media_provas}")
