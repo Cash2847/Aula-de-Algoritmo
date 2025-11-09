@@ -1,21 +1,22 @@
-# mylist = [170, 45, 75, 90, 802, 24, 2, 66]
-# print("Original array:", mylist)
-# radixArray = [[], [], [], [], [], [], [], [], [], []]
-# maxVal = max(mylist)
-# exp = 1
 
-# while maxVal // exp > 0:
+minha_lista = [170, 45, 75, 90, 802, 24, 2, 66]
+print(f"Lista original: {minha_lista}")
+lista_radix = [[], [], [], [], [], [], [], [], [], []]
+maxVal = max(minha_lista)
+exp = 1
 
-#   while len(mylist) > 0:
-#     val = mylist.pop()
-#     radixIndex = (val // exp) % 10
-#     radixArray[radixIndex].append(val)
+while maxVal // exp > 0:
 
-#   for bucket in radixArray:
-#     while len(bucket) > 0:
-#       val = bucket.pop()
-#       mylist.append(val)
+  while len(minha_lista) > 0:
+    val = minha_lista.pop()
+    indice_radix = (val // exp) % 10
+    lista_radix[indice_radix].append(val)
 
-#   exp *= 10
+  for bucket in lista_radix:
+    while len(bucket) > 0:
+        val = bucket.pop()
+        minha_lista.append(val)
 
-# print(mylist)
+    exp *= 10
+
+print(f"Lista atualizada: {minha_lista}")
