@@ -1,22 +1,17 @@
 import tracemalloc
 
-# mylist = [64, 34, 25, 5, 22, 11, 90, 12]
-
-# n = len(mylist)
-# for i in range(n-1):
-#   min_index = i
-#   for j in range(i+1, n):
-#      if mylist[j] < mylist[min_index]:
-#        min_index = j
-#   min_value = mylist.pop(min_index)
-#   mylist.insert(i, min_value)
-
-# print(mylist)
-
 tracemalloc.start()
 
 minha_lista = [12, 5434, 65, 23, 12, 342, 10, 3223]
 
+n = len(minha_lista)
+for i in range(n - 1):
+    min_index = i
+    for j in range(i + 1, n):
+        if minha_lista[j] < minha_lista[min_index]:
+            min_index = j
+    valor_minimo = minha_lista.pop(min_index)
+    minha_lista.insert(i, valor_minimo)
 
 print(minha_lista)
 
