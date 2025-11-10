@@ -1,37 +1,37 @@
 
 import tracemalloc
 import time
-import random
+
 
 tracemalloc.start()
-
-
-minha_lista = [random.randint(0, 100) for i in range(0, 100)]
-print(f"Lista original: {minha_lista}")
-
 inicio = time.time()
 
-def counting_sort(lista):
-  max_val = max(lista)
-  contagem = [0] * (max_val + 1)
+minha_lista = [.22, .32, .43, .21, .20, .23, .25, .44, .20, .6763, .122, .222, .12211, .21222, .1211, .55]
+print(f"Lista original: {minha_lista}")
 
-  while len(lista) > 0:
-    numero = lista.pop(0)
-    contagem[numero] += 1
+def bucket_sort(lista):
+    buckets = []
+    for i in range(len(lista)):
+        buckets.append([])
 
-  for i in range(len(contagem)):
-    while contagem[i] > 0:
-      lista.append(i)
-      contagem[i] -= 1
+    for j in lista:
+        indice_b = int(10 * j)
+        buckets[indice_b].append(j)
 
-  return lista
+    for i in range(len(lista)):
+        buckets[i] = sorted(buckets[i])
+    
+    k = 0
+    for i in range(len(lista)):
+        for j in range(len(buckets[i])):
+            lista[k] = buckets[i][j]
+            k += 1
+    return lista
 
-
-lista_organizada = counting_sort(minha_lista)
+lista_organizada = bucket_sort(minha_lista)
 print(f"\nLista ordenada: {lista_organizada}")
 
 final = time.time()
-
 memoria_atual,memoria_pico = tracemalloc.get_traced_memory()
 
 tracemalloc.stop()
@@ -39,4 +39,5 @@ tracemalloc.stop()
 print(f"\nO tempo de execução é: {final-inicio:.3f} segundos.")
 print(f"A memória atual é: {memoria_atual/1024:.3f} KB.")
 print(f"A memória em seu pico é: {memoria_pico/1024:.3f} KB.")
+
 
