@@ -33,19 +33,19 @@ def heap_sort(lista):
         heapify(minha_lista, n, i)
 
     for i in range(n - 1, 0, -1):
-        lista[i], lista[0] = lista[0], lista[i]  # Swap max to end
+        lista[i], lista[0] = lista[0], lista[i]
         heapify(lista, i, 0)
     return minha_lista
 
 
 lista_ordenada = heap_sort(minha_lista)
-print(f"Lista organizada: {lista_ordenada}")
+print(f"\nLista organizada: {lista_ordenada}")
 
 final = time.time()
 memoria_atual,memoria_pico = tracemalloc.get_traced_memory()
 
 tracemalloc.stop()
 
-print(f"O tempo de execução é: {final-inicio:.3f} segundos")
-print(f"A memória atual é: {memoria_atual/1024:.3f} KB")
-print(f"A memória em seu pico é: {memoria_pico/1024:.3f} KB")
+print(f"\nO tempo de execução é: {final-inicio:.3f} segundos.")
+print(f"A memória atual é: {memoria_atual/1024:.3f} KB.")
+print(f"A memória em seu pico é: {memoria_pico/1024:.3f} KB.")
