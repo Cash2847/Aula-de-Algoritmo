@@ -44,7 +44,7 @@ def merge_sort(minha_lista):
 
 
 lista_organizada = merge_sort(minha_lista)
-print(f"Lista ordenada: {lista_organizada}")
+print(f"\nLista ordenada: {lista_organizada}")
 
 final = time.time()
 
@@ -52,6 +52,6 @@ memoria_atual,memoria_pico = tracemalloc.get_traced_memory()
 
 tracemalloc.stop()
 
-print(f"O tempo de execução é: {final-inicio:.3f} segundos")
-print(f"A memória atual é: {memoria_atual/1024:.3f} KB")
-print(f"A memória em seu pico é: {memoria_pico/1024:.3f} KB")
+print(f"\nO tempo de execução é: {final-inicio:.3f} segundos.")
+print(f"A memória atual é: {memoria_atual/1024:.3f} KB.")
+print(f"A memória em seu pico é: {memoria_pico/1024:.3f} KB.")
