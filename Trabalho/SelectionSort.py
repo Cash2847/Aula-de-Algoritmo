@@ -19,7 +19,7 @@ for i in range(n - 1):
     valor_minimo = minha_lista.pop(min_index)
     minha_lista.insert(i, valor_minimo)
 
-print(f"Lista ordenada: {minha_lista}")
+print(f"\nLista ordenada: {minha_lista}")
 
 final = time.time()
 
@@ -27,8 +27,6 @@ memoria_atual,memoria_pico = tracemalloc.get_traced_memory()
 
 tracemalloc.stop()
 
-print(f"O tempo de execução é: {final-inicio:.3f} segundos")
-print(f"A memória atual é: {memoria_atual/1024:.3f} KB")
-print(f"A memória em seu pico é: {memoria_pico/1024:.3f} KB")
-
-
+print(f"\nO tempo de execução é: {final-inicio:.3f} segundos.")
+print(f"A memória atual é: {memoria_atual/1024:.3f} KB.")
+print(f"A memória em seu pico é: {memoria_pico/1024:.3f} KB.")
